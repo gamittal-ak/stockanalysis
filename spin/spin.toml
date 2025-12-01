@@ -1,0 +1,13 @@
+spin_version = "1"
+name = "ticker-analyzer"
+description = "Fermyon Spin orchestrator for ticker → analysis"
+trigger = { type = "http", base = "/" }
+
+[[component]]
+id = "analyze"
+source = "dist/component.wasm"
+environment = { BACKEND_URL = "${BACKEND_URL}" }
+bindle = ""
+[component.trigger]
+route = "/analyze/{ticker}"
+executor = { type = "wagi" }
